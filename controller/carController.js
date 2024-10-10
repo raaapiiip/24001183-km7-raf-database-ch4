@@ -2,6 +2,12 @@ const { Car } = require("../models");
 
 async function getAllCars(req, res) {
     try {
+        // console.log("Processing when there's request");
+        // console.log(req.requestTime)
+        // console.log("Processing who's try to request/access");
+        // console.log(req.username)
+        // console.log("Processing what API that user request");
+        // console.log(req.originalUrl)
         const cars = await Car.findAll();
 
         res.status(200).json({
