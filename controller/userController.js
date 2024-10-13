@@ -126,20 +126,19 @@ async function UpdateUserById(req, res) {
 }
 
 async function createUser(req, res) {
-    const file = req.file
-    console.log(req.file);
     // File processing
+    const file = req.file;
+    console.log(req.file);
 
     // 1. Split to get extension and file name
     const split = file.originalname.split(".")
-
-    const ext = split[split.length - 1]
+    const extension = split[split.length - 1]
     const filename = split[0]
 
     // 2. Upload image to server
     const uploadedImage = await imagekit.upload({
         file : file.buffer,
-        fileName : `Profile-${filename}-${Date.now()}.${ext}`
+        fileName : `Profile-${filename}-${Date.now()}.${extension}`
     })
 
     console.log(uploadedImage);
@@ -152,7 +151,7 @@ async function createUser(req, res) {
         });
     }
 
-    console.log(uploadedImage)
+    console.log(uploadedImage);
 
     const newUser = req.body;
 

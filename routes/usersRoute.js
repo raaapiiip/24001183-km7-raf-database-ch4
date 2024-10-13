@@ -1,7 +1,6 @@
 const express = require("express");
 const upload = require("../middlewares/uploader");
 const router = express.Router();
-const multer = require ("multer");
 
 const userController = require("../controller/userController");
 
@@ -14,10 +13,10 @@ router.get("/:id", userController.getUserById);
 // API for delete user data by id
 router.delete("/:id", userController.deleteUserById);
 
-// API for update data by id
+// API for update user data by id
 router.patch("/:id", userController.UpdateUserById);
 
 // API for create new user data
-router.post("/", upload.single('photoProfile'), userController.createUser);
+router.post("/", upload.single("photoProfile"), userController.createUser);
 
 module.exports = router;
