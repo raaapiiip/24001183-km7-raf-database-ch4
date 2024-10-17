@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <table>
-    <th>Name</th>
-    <th>Photo profile</th>
-    <th>Age</th>
-    <th>Phone Number</th>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Photo profile</th>
+      <th>Age</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
     <% users.map((user)=> { %>
       <tr>
-        <td><%= user.firstName %></td>
-        <td><%= user.age %></td>
-        <td><%= user.phoneNumber %></td>
-        <td><img src="<%= user.photoProfile %>"></td>
+        <td>
+          <%= user.firstName %>
+        </td>
+        <td>
+          <img src="<%= user.photoProfile %>" alt="Profile photo" class="rounded mx-auto d-block">
+        </td>
+        <td>
+          <%= user.age %>
+        </td>
+        <td>
+          <%= user.phoneNumber %>
+        </td>
       </tr>
       <% }) %>
-  </table>
-</body>
-
-</html>
+  </tbody>
+</table>

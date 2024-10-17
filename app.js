@@ -1,5 +1,9 @@
+// Third-party modules
 const morgan = require("morgan");
 const express = require("express");
+const expressEJSLayout = require("express-ejs-layouts");
+
+// Local modules
 const usersRoute = require("./routes/usersRoute");
 const carsRoute = require("./routes/carsRoute");
 const sparepartsRoute = require("./routes/sparepartsRoute");
@@ -36,6 +40,8 @@ app.use(express.static(`${__dirname}/public`));
 
 // Call EJS view engine
 app.set("view engine", "ejs");
+app.use(expressEJSLayout);
+app.set("layout", "layout");
 
 app.get("/dashboard/admin/", async (req, res) => {
   try {
@@ -66,7 +72,7 @@ app.get("/", async (req, res) => {
 });
 
 // Dashboard Route
-app.use("/dashboard/admin", dashboardRoute)
+app.use("/dashboard/admin", dashboardRoute);
 
 // Routes
 app.use("/api/v1/users", usersRoute);
